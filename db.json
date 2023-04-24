@@ -1,0 +1,57 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "tasks": [
+    {
+      "name": "asdlj",
+      "place": "oiajdesoloj",
+      "email": "lkan@ajld.asd",
+      "date": "2023-04-24T22:00:00.000Z",
+      "reminder": "yes",
+      "type": "Health",
+      "time": "11:11",
+      "tel": "+36307894561",
+      "comment": "",
+      "id": 1
+    },
+    {
+      "name": "asd",
+      "place": "asd",
+      "email": "asda@sd.asd",
+      "date": "2023-04-23T22:00:00.000Z",
+      "reminder": "yes",
+      "type": "Important",
+      "time": "12:12",
+      "tel": "+06301234567",
+      "comment": "asd",
+      "id": 2
+    },
+    {
+      "name": "asd",
+      "place": "sad",
+      "email": "asd@as.asd",
+      "date": "2023-04-25T22:00:00.000Z",
+      "reminder": "no",
+      "type": "Work",
+      "time": "15:15",
+      "tel": "+06301234567",
+      "comment": "32ouh",
+      "id": 3
+    }
+  ]
+}
