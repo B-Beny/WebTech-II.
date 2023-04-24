@@ -1,0 +1,103 @@
+<mat-toolbar color="primary">
+  <span>Task Tracker</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button (click)="openAddTaskForm()">
+    Add Task
+  </button>
+</mat-toolbar>
+
+<div class="main-body">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+
+      <!-- Place Column -->
+      <ng-container matColumnDef="place">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Place </th>
+        <td mat-cell *matCellDef="let row"> {{row.place}} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+      </ng-container>
+      
+      <!-- Date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.date | date: 'yyyy. MM. dd.' }} </td>
+      </ng-container>
+
+      <!-- Reminder Column -->
+      <ng-container matColumnDef="reminder">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Reminder </th>
+        <td mat-cell *matCellDef="let row"> {{row.reminder}} </td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+        <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+      </ng-container>
+
+      <!-- Time Column -->
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+        <td mat-cell *matCellDef="let row"> {{row.time}} </td>
+      </ng-container>
+
+      <!-- Tel Column -->
+      <ng-container matColumnDef="tel">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Telephone </th>
+        <td mat-cell *matCellDef="let row"> {{row.tel}} </td>
+      </ng-container>
+
+      <!-- Comment Column -->
+      <ng-container matColumnDef="comment"> 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment </th>
+        <td mat-cell *matCellDef="let row"> {{row.comment}} </td>
+      </ng-container>
+
+      <!-- Modify Column -->
+      <ng-container matColumnDef="action"> 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td mat-cell *matCellDef="let row"> 
+          <button mat-icon-button color="primary" (click)="openEditForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" (click)="deleteTask(row.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSize]="25" [pageSizeOptions]="[10, 25, 50, 75, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div mat-dialog-title>
+    <h1>Task Form</h1>
+</div>
+<form [formGroup]="taskForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" placeholder="Ex. Doctor's Appointment" formControlName="name">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Place</mat-label>
+                <input matInput type="text" placeholder="Ex. 145th Wall St." formControlName="place">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Ex. test@gmail.com" formControlName="email">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-hint>YYYY. MM. DD.</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-radio-group aria-label="Select an option" formControlName="reminder">
+                <mat-label><b>Reminder: </b></mat-label>
+                <mat-radio-button value="yes">Yes</mat-radio-button>
+                <mat-radio-button value="no">No</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="type">
+                <mat-option *ngFor="let val of taskType" [value]="val">
+                    {{ val }}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Time</mat-label>
+                <input matInput type="time" formControlName="time">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Telephone</mat-label>
+                <input matInput type="tel" placeholder="Ex. +36301234567" formControlName="tel">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Comment</mat-label>
+                <input matInput type="text" placeholder="Write a comment" formControlName="comment">
+            </mat-form-field>
+        </div>
+
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">{{ data ? 'Update' : 'Save' }}</button>
+    </div>
+</form>
